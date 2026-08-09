@@ -1,0 +1,62 @@
+/* --- Ambient Glow Animations --- */
+@keyframes ambientPulse {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+.ambient-glow-1 {
+  animation: ambientPulse 10s ease-in-out infinite;
+}
+
+.ambient-glow-2 {
+  animation: ambientPulse 12s ease-in-out infinite alternate;
+}
+
+/* --- Scroll-Triggered Entrance Animations --- */
+.scroll-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: opacity, transform;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-animated .scroll-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Stagger Delays for Entrance --- */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+
+/* --- Show Card Interactive Hover Effect --- */
+.show-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              background-color 0.4s ease;
+}
+
+.show-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(211, 204, 0, 0.35);
+  box-shadow: 0 12px 35px -10px rgba(211, 204, 0, 0.18);
+}
+
+/* --- Button Pulsing Glow --- */
+.animate-glow-btn {
+  box-shadow: 0 0 15px rgba(211, 204, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-glow-btn:hover {
+  box-shadow: 0 0 25px rgba(211, 204, 0, 0.75);
+}

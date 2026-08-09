@@ -1,0 +1,66 @@
+/* Enable rendering optimizations for the Gallery section */
+#gallery {
+  content-visibility: auto;
+  contain-intrinsic-size: 100vh;
+}
+
+/* Keyframes using 3D transform for maximum GPU rendering efficiency */
+@keyframes marqueeLeft {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes marqueeRight {
+  0%   { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+.marquee-wrapper {
+  contain: layout paint style;
+  transform: translateZ(0);
+}
+
+.marquee-left {
+  animation: marqueeLeft 75s linear infinite;
+  will-change: transform;
+}
+
+.marquee-right {
+  animation: marqueeRight 75s linear infinite;
+  will-change: transform;
+}
+
+/* Pause animation smoothly on hover */
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: border-color, box-shadow;
+  transform: translateZ(0);
+}
+
+.marquee-item:hover {
+  border-color: rgba(211, 204, 0, 0.4);
+  box-shadow: 0 0 15px rgba(211, 204, 0, 0.15);
+}
+
+/* --- Scroll Entrance Animations --- */
+.scroll-fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  will-change: opacity, transform;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-animated .scroll-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger Delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }

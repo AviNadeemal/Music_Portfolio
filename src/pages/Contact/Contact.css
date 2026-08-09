@@ -1,0 +1,157 @@
+/* ==========================================================================
+   Contact Section - Performance & Micro-Interactions
+   ========================================================================== */
+
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 100vh;
+  position: relative;
+}
+
+/* --- Smooth Entrance Scroll Animations --- */
+@keyframes contactFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes contactFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Apply staggered scroll animations to section elements */
+#contact .text-center {
+  animation: contactFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+#contact .flex-col > div:nth-child(1) {
+  animation: contactFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+#contact .flex-col > div:nth-child(2) {
+  animation: contactFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+/* --- Left Card Image & Overlay Hover --- */
+#contact img {
+  will-change: transform, filter;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1s ease;
+}
+
+#contact .group:hover img,
+#contact div:first-child:hover img {
+  transform: scale(1.04);
+}
+
+/* Light misty ambient pulse for left card */
+@keyframes ambientPulse {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+#contact .min-h-\[400px\]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  animation: ambientPulse 4s ease-in-out infinite;
+}
+
+/* --- Form Fields & Floating Line Transitions --- */
+#contact input,
+#contact textarea {
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease, color 0.3s ease;
+  background-color: transparent !important;
+}
+
+/* Fix Browser Autofill White/Light-Blue Background Box */
+#contact input:-webkit-autofill,
+#contact input:-webkit-autofill:hover, 
+#contact input:-webkit-autofill:focus, 
+#contact input:-webkit-autofill:active,
+#contact textarea:-webkit-autofill,
+#contact textarea:-webkit-autofill:hover,
+#contact textarea:-webkit-autofill:focus,
+#contact textarea:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px transparent !important;
+}
+
+/* Underline glow when focused */
+#contact input:focus,
+#contact textarea:focus {
+  border-bottom-color: var(--tertiary, #d3cc00) !important;
+  box-shadow: 0 2px 10px -2px rgba(211, 204, 0, 0.3);
+}
+
+/* Smooth Label Movement */
+#contact label {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.3s ease,
+              font-size 0.3s ease;
+  will-change: transform, color;
+}
+
+/* --- Submit Button Animation & Hover --- */
+#contact button[type="submit"] {
+  will-change: transform, box-shadow, background-color;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease;
+}
+
+#contact button[type="submit"]:hover {
+  box-shadow: 0 0 25px rgba(211, 204, 0, 0.6),
+              0 0 50px rgba(211, 204, 0, 0.2);
+}
+
+#contact button[type="submit"]:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+/* --- Success State Checkmark Pulse --- */
+@keyframes checkPop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#contact .material-symbols-outlined {
+  display: inline-block;
+  animation: checkPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* --- Email & Location Hover Indicator --- */
+#contact .space-y-4 > div {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#contact .space-y-4 > div:hover {
+  transform: translateX(6px);
+}

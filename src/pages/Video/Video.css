@@ -1,0 +1,24 @@
+/* --- Scroll-Triggered Animation Classes --- */
+.scroll-fade-up,
+.scroll-pop-in {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.scroll-animated .scroll-fade-up {
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.scroll-animated .scroll-pop-in {
+  animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* --- Stagger Delays --- */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
