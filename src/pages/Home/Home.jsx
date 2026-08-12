@@ -110,7 +110,7 @@ const Home = () => {
                   className="w-full sm:w-auto px-7 md:px-9 py-3.5 bg-tertiary-container text-on-tertiary font-label font-bold uppercase tracking-widest text-xs sm:text-sm rounded-full animate-glow hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3"
                 >
                   <img src="/images/play-bu.png" alt="Play" className="w-5 h-5" />
-                  New Release
+                  New Releases
                 </button>
                 <button
                   onClick={() => window.open('https://ceynk.link/dhyan', '_blank', 'noopener,noreferrer')}

@@ -63,10 +63,11 @@ const Contact = () => {
               <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at center, transparent 0%, #0b1326 100%)' }}></div>
             </div>
             <div className="relative z-10 max-w-md">
-              <h3 className="font-headline text-4xl md:text-5xl font-bold text-on-surface mb-4 tracking-tight">The Vision</h3>
-              <div className="w-16 h-1 bg-tertiary mb-6"></div>
-              <p className="font-body text-xl italic text-secondary leading-relaxed mb-6">
+              <p className="font-body text-xl italic text-secondary leading-relaxed mb-2">
                 "Music is the mist that connects the silence of the night to the vibration of the soul."
+              </p>
+              <p className="font-label text-sm uppercase tracking-widest text-tertiary mb-6">
+                -Dhyan Hewage-
               </p>
               <div className="space-y-4 mt-8">
                 <div className="flex items-center gap-4 text-secondary hover:text-tertiary transition-colors">
