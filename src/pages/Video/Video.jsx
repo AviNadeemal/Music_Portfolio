@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const videos = [
-  { id: 6, title: "Lanwenawado", subtitle: "Official Music Video • 2026", duration: "4:27", badge: "NEW RELEASE", thumb: "/images/lanwenawado.jpeg", url: "https://youtu.be/qpsmec6bNe4?si=BFs882Wu4er0pZpZ" },
+  { id: 6, title: "Lanwenawado", subtitle: "Official Music Video • 2026", duration: "4:27", badge: "NEW RELEASE", thumb: "/images/lanwenawado.jpg", url: "https://youtu.be/qpsmec6bNe4?si=BFs882Wu4er0pZpZ" },  
   { id: 1, title: "Kuludul Araliyamal", subtitle: "Official Music Video • 2024", duration: "3:33", thumb: "/images/kuludul_araliyamal.jpg", url: "https://youtu.be/Te8miNP7hAo?si=_CkHYKsx_OamMtqA" },
   { id: 2, title: "Ape Kathandare", subtitle: "Official Music Video • 2024", duration: "2:56", thumb: "/images/ape_kathandare.jpg", url: "https://youtu.be/TwRe8R5sxLE?si=T7h_Na3uIMnAOUaM" },
   { id: 3, title: "Hanthane", subtitle: "Official Music Video • 2020", duration: "4:01", thumb: "/images/hantane.jpg", url: "https://youtu.be/HQ9OjFeC6Zc?si=gePW69Ep043rEiPt" },
