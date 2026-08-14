@@ -8,11 +8,12 @@ const SOCIAL_LINKS = {
   instagram:  "https://www.instagram.com/dhyanhewage?igsh=Y2UxdDlkdmdvN25s&utm_source=qr",
   spotify:    "https://open.spotify.com/artist/3ES7kGNf8O344XSDG3kW8G?si=FHUnqBEETFWzGD5y1Tyubg",
   tiktok:     "https://www.tiktok.com/@dhyanhewage?_r=1&_t=ZT-97m6Mh408ZK",
-  appleMusic: "https://music.apple.com/ec/artist/dhyan-hewage/1449254201",
+  appleMusic: "https://music.apple.com/us/artist/dhyan-hewage/1449254201",
 };
 
 const SPOTIFY_PLAYLIST_ID = "37i9dQZF1DZ06evO282gHE";
 const APPLE_MUSIC_ID   = "1449254201";
+const PURCHASE_URL = "https://ceynk.link/dhyan/shop/numba-dun-adare-the-album?purchase=true";
 
 const Home = () => {
   const musicSectionRef = useRef(null);
@@ -100,28 +101,37 @@ const Home = () => {
               </h1>
             </div>
 
-            {/* Action Group (Buttons + Social Icons perfectly aligned to NEW RELEASE button start) */}
-            <div className="inline-flex flex-col items-center md:items-start gap-4 animate-fade-in-up delay-300">
+            {/* Action Group (Buttons + Centered Social Icons) */}
+            <div className="inline-flex flex-col items-center gap-4 animate-fade-in-up delay-300">
               
-              {/* Buttons Row */}
-              <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full">
+              {/* Single Row Buttons Container */}
+              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 w-full justify-center">
                 <button
                   onClick={() => window.open('https://music.mrecentertainment.com/NumbaDunAdareAlbum', '_blank', 'noopener,noreferrer')}
-                  className="w-full sm:w-auto px-7 md:px-9 py-3.5 bg-tertiary-container text-on-tertiary font-label font-bold uppercase tracking-widest text-xs sm:text-sm rounded-full animate-glow hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3"
+                  className="w-full sm:w-auto px-5 sm:px-6 md:px-7 py-3.5 bg-tertiary-container text-on-tertiary font-label font-bold uppercase tracking-widest text-xs sm:text-sm rounded-full animate-glow hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2.5 whitespace-nowrap"
                 >
                   <img src="/images/play-bu.png" alt="Play" className="w-5 h-5" />
                   New Releases
                 </button>
+
+                {/* Download Album Button */}
+                <button
+                  onClick={() => window.open(PURCHASE_URL, '_blank', 'noopener,noreferrer')}
+                  className="w-full sm:w-auto px-5 sm:px-6 md:px-7 py-3.5 border border-outline-variant/30 text-on-surface font-label font-bold uppercase tracking-widest text-xs sm:text-sm rounded-full backdrop-blur-md hover:bg-white/10 hover:border-white/50 active:scale-95 transition-all duration-300 whitespace-nowrap"
+                >
+                  Download Album
+                </button>
+
                 <button
                   onClick={() => window.open('https://ceynk.link/dhyan', '_blank', 'noopener,noreferrer')}
-                  className="w-full sm:w-auto px-7 md:px-9 py-3.5 border border-outline-variant/30 text-on-surface font-label font-bold uppercase tracking-widest text-xs sm:text-sm rounded-full backdrop-blur-md hover:bg-white/10 hover:border-white/50 active:scale-95 transition-all duration-300"
+                  className="w-full sm:w-auto px-5 sm:px-6 md:px-7 py-3.5 border border-outline-variant/30 text-on-surface font-label font-bold uppercase tracking-widest text-xs sm:text-sm rounded-full backdrop-blur-md hover:bg-white/10 hover:border-white/50 active:scale-95 transition-all duration-300 whitespace-nowrap"
                 >
                   Explore
                 </button>
               </div>
 
-              {/* Social Icons — Aligns precisely to the left edge of 'NEW RELEASE' button */}
-              <div className="flex items-center justify-center md:justify-start flex-wrap gap-3 sm:gap-3.5 w-full pt-1">
+              {/* Social Icons — Centered relative to the buttons above */}
+              <div className="flex items-center justify-center flex-wrap gap-3 sm:gap-3.5 w-full pt-1">
                 <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className="animate-pop-in" style={{ animationDelay: '500ms' }}>
                   <img src="/images/communication.png" alt="Facebook" className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full border border-white/10 shadow-2xl hover:scale-125 transition-transform duration-300 cursor-pointer" />
                 </a>
@@ -211,7 +221,7 @@ const Home = () => {
                   height="450"
                   style={{ width: '100%', overflow: 'hidden', borderRadius: '16px', display: 'block', background: 'transparent' }}
                   sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-                  src={`https://embed.music.apple.com/ec/artist/dhyan-hewage/${APPLE_MUSIC_ID}`}
+                  src={`https://embed.music.apple.com/us/artist/dhyan-hewage/${APPLE_MUSIC_ID}?l=en-US`}
                 />
               </div>
               <a

@@ -76,7 +76,7 @@ const Contact = () => {
                 </div>
                 <div className="flex items-center gap-4 text-secondary hover:text-tertiary transition-colors">
                   <span className="material-symbols-outlined">location_on</span>
-                  <span className="font-label text-sm uppercase tracking-wider">Colombo, Sri Lanka</span>
+                  <span className="font-label text-sm uppercase tracking-wider">Los Angeles California, USA</span>
                 </div>
               </div>
             </div>

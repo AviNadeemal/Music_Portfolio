@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const videos = [
-  { id: 1, title: "Kuludul Araliyamal", subtitle: "Official Music Video • 2024", duration: "3:32", thumb: "/images/kuludul_araliyamal.jpg", url: "https://youtu.be/Te8miNP7hAo?si=_CkHYKsx_OamMtqA" },
-  { id: 2, title: "Ape Kathandare", subtitle: "Official Music Video • 2024", duration: "2:55", thumb: "/images/ape_kathandare.jpg", url: "https://youtu.be/TwRe8R5sxLE?si=T7h_Na3uIMnAOUaM" },
-  { id: 3, title: "Hanthane", subtitle: "Official Music Video • 2020", duration: "4:00", thumb: "/images/hantane.jpg", url: "https://youtu.be/HQ9OjFeC6Zc?si=gePW69Ep043rEiPt" },
-  { id: 4, title: "Hithawanthi", subtitle: "Official Music Video • 2023", duration: "5:30", thumb: "/images/hithawanthi.jpg", url: "https://youtu.be/Td8BL6iuzps?si=2vmH61lnhChe23oV" },
-  { id: 5, title: "Me Hitha Ne Palu", subtitle: "Official Music Video • 2022", duration: "3:08", thumb: "/images/me_hitha_ne_palu.jpg", url: "https://youtu.be/n2ayhLdwo2Y?si=bV8-NDf0_LNtRUAV" },
-  { id: 6, title: "Pe Sina", subtitle: "Official Music Video • 2025", duration: "3:48", badge: "", thumb: "/images/pe_sina.jpeg", url: "https://youtu.be/PLj4JiHVFFU?si=UC6BC8efHqTPDkX1" },
+  { id: 6, title: "Lanwenawado", subtitle: "Official Music Video • 2026", duration: "4:27", badge: "NEW RELEASE", thumb: "/images/lanwenawado.jpeg", url: "https://youtu.be/qpsmec6bNe4?si=BFs882Wu4er0pZpZ" },
+  { id: 1, title: "Kuludul Araliyamal", subtitle: "Official Music Video • 2024", duration: "3:33", thumb: "/images/kuludul_araliyamal.jpg", url: "https://youtu.be/Te8miNP7hAo?si=_CkHYKsx_OamMtqA" },
+  { id: 2, title: "Ape Kathandare", subtitle: "Official Music Video • 2024", duration: "2:56", thumb: "/images/ape_kathandare.jpg", url: "https://youtu.be/TwRe8R5sxLE?si=T7h_Na3uIMnAOUaM" },
+  { id: 3, title: "Hanthane", subtitle: "Official Music Video • 2020", duration: "4:01", thumb: "/images/hantane.jpg", url: "https://youtu.be/HQ9OjFeC6Zc?si=gePW69Ep043rEiPt" },
+  { id: 4, title: "Hithawanthi", subtitle: "Official Music Video • 2023", duration: "5:31", thumb: "/images/hithawanthi.jpg", url: "https://youtu.be/Td8BL6iuzps?si=2vmH61lnhChe23oV" },
+  { id: 5, title: "Me Hitha Ne Palu", subtitle: "Official Music Video • 2022", duration: "3:09", thumb: "/images/me_hitha_ne_palu.jpg", url: "https://youtu.be/n2ayhLdwo2Y?si=bV8-NDf0_LNtRUAV" },
 ];
 
 const Video = () => {
