@@ -5,26 +5,29 @@ const shows = [
   {
     month: "SEP",
     day: "05",
+    title: "DEDUNU PALAMA",
     city: "KULIYAPITIYA",
     venue: "Pandith W. D. Amaradewa Auditorium - University of Wayamba",
     availability: "AVAILABLE",
-    status: "book"
+    status: "book",
+    poster: "/images/IMG_5230.jpeg"
   }
 ];
 
 const Shows = () => {
   const showsSectionRef = useRef(null);
   const [isShowsVisible, setIsShowsVisible] = useState(false);
+  const [selectedPoster, setSelectedPoster] = useState(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsShowsVisible(true);
-          observer.disconnect(); // Triggers once on first scroll
+          observer.disconnect();
         }
       },
-      { threshold: 0.15 } // Triggers when 15% of section enters viewport
+      { threshold: 0.15 }
     );
 
     if (showsSectionRef.current) {
@@ -66,8 +69,8 @@ const Shows = () => {
           ></div>
         </div>
 
-       {/* Tour Dates Header Line */}
-       <div className="mb-12 border-b border-outline-variant/20 pb-6 scroll-fade-up delay-200">
+        {/* Tour Dates Header Line */}
+        <div className="mb-12 border-b border-outline-variant/20 pb-6 scroll-fade-up delay-200">
           <h3 className="font-headline text-3xl md:text-4xl font-bold tracking-tight">DATES</h3>
         </div>
 
@@ -76,35 +79,60 @@ const Shows = () => {
           {shows.map((show, i) => (
             <div
               key={i}
-              className={`show-card scroll-fade-up delay-300 group relative backdrop-blur-xl rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border ${
+              className={`show-card scroll-fade-up delay-300 group relative backdrop-blur-xl rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border ${
                 show.status === 'soldout'
                   ? 'bg-surface-container-low/20 border-outline-variant/5 opacity-50'
                   : 'bg-surface-variant/30 border-outline-variant/10 hover:bg-surface-variant/40'
               }`}
             >
-              <div className="flex items-center gap-6 md:gap-10 w-full sm:w-auto">
-                <div className="flex flex-col items-center min-w-[64px]">
-                  <span className="font-label text-tertiary text-base font-bold tracking-tighter">
+              <div className="flex items-center gap-3 sm:gap-6 md:gap-8 w-full lg:w-auto">
+                {/* Clickable Poster Thumbnail */}
+                {show.poster && (
+                  <button 
+                    onClick={() => setSelectedPoster(show.poster)}
+                    className="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-xl overflow-hidden shrink-0 border border-outline-variant/20 focus:outline-none cursor-pointer group/poster relative"
+                  >
+                    <img 
+                      src={show.poster} 
+                      alt={`${show.city} concert poster`} 
+                      className="w-full h-full object-cover group-hover/poster:scale-110 transition-transform duration-300" 
+                    />
+                  </button>
+                )}
+
+                {/* Date Display */}
+                <div className="flex flex-col items-center shrink-0 min-w-[40px] sm:min-w-[64px]">
+                  <span className="font-label text-tertiary text-xs sm:text-base font-bold tracking-tighter">
                     {show.month}
                   </span>
-                  <span className="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter leading-none">
+                  <span className="font-headline text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter leading-none">
                     {show.day}
                   </span>
                 </div>
-                <div className="w-[1px] h-12 bg-tertiary/20 hidden md:block"></div>
-                <div>
-                  <h4 className="font-headline text-xl md:text-2xl font-bold text-on-surface group-hover:text-tertiary transition-colors">
+
+                {/* Divider Line */}
+                <div className="w-[1px] h-10 md:h-12 bg-tertiary/20 shrink-0"></div>
+
+                {/* Info Block */}
+                <div className="min-w-0 flex-1">
+                  {show.title && (
+                    <span className="font-label text-tertiary text-[10px] sm:text-xs font-bold tracking-wider uppercase block mb-0.5">
+                      {show.title}
+                    </span>
+                  )}
+                  <h4 className="font-headline text-base sm:text-xl md:text-2xl font-bold text-on-surface group-hover:text-tertiary transition-colors break-words">
                     {show.city}
                   </h4>
-                  <p className="font-body text-on-surface-variant italic text-base leading-tight mt-1">
+                  <p className="font-body text-on-surface-variant italic text-xs sm:text-base leading-tight mt-1">
                     {show.venue}
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 md:gap-6 w-full sm:w-auto justify-between sm:justify-end">
-                <div className="hidden lg:flex flex-col items-end">
-                  <span className="font-label text-[10px] text-on-surface-variant tracking-[0.2em] mb-1">
+              {/* Action / Status */}
+              <div className="flex items-center gap-4 md:gap-6 w-full lg:w-auto justify-between lg:justify-end border-t lg:border-t-0 pt-4 lg:pt-0 border-outline-variant/10">
+                <div className="flex lg:flex-col items-center lg:items-end gap-2 lg:gap-0">
+                  <span className="font-label text-[10px] text-on-surface-variant tracking-[0.2em] lg:mb-1">
                     AVAILABILITY
                   </span>
                   <span
@@ -131,7 +159,7 @@ const Shows = () => {
                     COMING SOON
                   </span>
                 ) : (
-                  <button className="animate-glow-btn bg-tertiary-container hover:bg-tertiary text-on-tertiary font-label font-bold px-6 md:px-8 py-3 md:py-4 rounded-full hover:scale-105 active:scale-95 text-xs tracking-widest uppercase transition-all duration-300">
+                  <button className="animate-glow-btn bg-tertiary-container hover:bg-tertiary text-on-tertiary font-label font-bold px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-full hover:scale-105 active:scale-95 text-xs tracking-widest uppercase transition-all duration-300 shrink-0">
                     BOOK TICKETS
                   </button>
                 )}
@@ -140,6 +168,32 @@ const Shows = () => {
           ))}
         </div>
       </div>
+
+      {/* Enlarged Poster Modal */}
+      {selectedPoster && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
+          onClick={() => setSelectedPoster(null)}
+        >
+          <div 
+            className="relative max-w-2xl w-full max-h-[90vh] flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setSelectedPoster(null)}
+              className="absolute -top-10 right-0 text-white hover:text-tertiary text-2xl font-bold p-2 focus:outline-none"
+              aria-label="Close modal"
+            >
+              ✕
+            </button>
+            <img 
+              src={selectedPoster} 
+              alt="Enlarged show poster" 
+              className="max-w-full max-h-[85vh] rounded-2xl object-contain shadow-2xl border border-white/10"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
