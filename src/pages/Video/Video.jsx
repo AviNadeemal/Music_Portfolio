@@ -9,9 +9,9 @@ const videos = [
   { id: 4, title: "Hithawanthi", subtitle: "Official Music Video • 2023", duration: "5:31", thumb: "/images/hithawanthi.jpg", url: "https://youtu.be/Td8BL6iuzps?si=2vmH61lnhChe23oV" },
   { id: 5, title: "Me Hitha Ne Palu", subtitle: "Official Music Video • 2022", duration: "3:09", thumb: "/images/me_hitha_ne_palu.jpg", url: "https://youtu.be/n2ayhLdwo2Y?si=bV8-NDf0_LNtRUAV" },
   { id: 7, title: "Pe sina", subtitle: "Official Music Video • 2025", duration: "3:48", thumb: "/images/pe_sina.jpeg", url: "https://youtu.be/PLj4JiHVFFU?si=mpNzmgnNxqwUqcYx" },
-  {id: 8, title: "Numba Dun Adare", subtitle: "Official Music Video • 2026", duration: "4:16", thumb: "/images/Official.png", url: "https://youtu.be/3y8NtIx2hVg?si=3o9VDeT5mzBCWJny" },
-  {id: 9, title: "Niwee Giya Atheethe", subtitle: "Official Music Video • 2026", duration: "3:11", badge: "NEW RELEASE", thumb: "/images/Niwee Giya Atheethe.jpeg", url: "https://youtu.be/NJCbhicn9tQ?si=4-gVUv_Txa4v4u_E" },
-  {id: 10, title: "Me Hitha Na Palu", subtitle: "Alokana • 2026", duration: "3:09", thumb: "/images/alokana.png", url: "https://youtu.be/Nalgm4gi8IE?si=uksParFpWj5mSSZI" }
+  { id: 8, title: "Numba Dun Adare", subtitle: "Official Music Video • 2026", duration: "4:16", thumb: "/images/Official.png", url: "https://youtu.be/3y8NtIx2hVg?si=3o9VDeT5mzBCWJny" },
+  { id: 9, title: "Niwee Giya Atheethe", subtitle: "Official Music Video • 2026", duration: "3:11", badge: "NEW RELEASE", thumb: "/images/Niwee Giya Atheethe.jpeg", url: "https://youtu.be/NJCbhicn9tQ?si=4-gVUv_Txa4v4u_E" },
+  { id: 10, title: "Me Hitha Na Palu", subtitle: "Alokana • 2026", duration: "3:09", thumb: "/images/alokana.png", url: "https://youtu.be/Nalgm4gi8IE?si=uksParFpWj5mSSZI" }
 ];
 
 // Constants for 3D Coverflow Calculation
@@ -41,8 +41,8 @@ function cssTransition(t) {
 // 3D Coverflow Carousel Sub-Component
 const Smooth3DCoverFlow = ({
   items = [],
-  cardWidth = 480,
-  cardHeight = 300,
+  cardWidth: defaultCardWidth = 480,
+  cardHeight: defaultCardHeight = 300,
   radius = 6,
   tilt = 12,
   sideTilt = 8,
@@ -52,9 +52,36 @@ const Smooth3DCoverFlow = ({
   transition = { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
 }) => {
   const [active, setActive] = useState(0);
+  const [cardDimensions, setCardDimensions] = useState({
+    width: defaultCardWidth,
+    height: defaultCardHeight,
+  });
+
   const n = items.length;
   const moveDur = transition?.duration || 0.6;
   const lockRef = useRef(false);
+
+  // Dynamically calculate responsive card sizes for smaller screens
+  useEffect(() => {
+    const handleResize = () => {
+      const padding = 32; // Side paddings
+      const screenWidth = window.innerWidth - padding;
+      if (screenWidth < defaultCardWidth) {
+        const responsiveWidth = Math.max(280, screenWidth);
+        const responsiveHeight = Math.round(responsiveWidth * (defaultCardHeight / defaultCardWidth));
+        setCardDimensions({ width: responsiveWidth, height: responsiveHeight });
+      } else {
+        setCardDimensions({ width: defaultCardWidth, height: defaultCardHeight });
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [defaultCardWidth, defaultCardHeight]);
+
+  const cardWidth = cardDimensions.width;
+  const cardHeight = cardDimensions.height;
 
   const lock = useCallback(() => {
     lockRef.current = true;
@@ -117,13 +144,13 @@ const Smooth3DCoverFlow = ({
   if (n === 0) return null;
 
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="flex flex-col items-center w-full overflow-hidden">
       <div
         tabIndex={0}
         role="group"
         aria-roledescription="carousel"
         onKeyDown={onKeyDown}
-        className="relative w-full h-[480px] md:h-[550px] flex items-center justify-center outline-none select-none"
+        className="relative w-full h-[380px] sm:h-[480px] md:h-[550px] flex items-center justify-center outline-none select-none"
         style={{ perspective: `${PERSPECTIVE}px` }}
       >
         <div
@@ -169,7 +196,7 @@ const Smooth3DCoverFlow = ({
                 key={v.id}
                 style={cardStyle}
                 onClick={() => handleCardClick(i, v.url)}
-                className="group overflow-hidden bg-surface-container-high shadow-2xl border border-outline-variant/10 hover:border-tertiary/40 card-hover-lift"
+                className="group overflow-hidden bg-surface-container-high shadow-2xl border border-outline-variant/10 hover:border-tertiary/40 card-hover-lift max-w-[calc(100vw-32px)]"
                 aria-label={v.title}
                 aria-hidden={!visible}
               >
