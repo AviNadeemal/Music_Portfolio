@@ -150,7 +150,7 @@ const Smooth3DCoverFlow = ({
         role="group"
         aria-roledescription="carousel"
         onKeyDown={onKeyDown}
-        className="relative w-full h-[380px] sm:h-[480px] md:h-[550px] flex items-center justify-center outline-none select-none"
+        className="relative w-full h-[320px] sm:h-[400px] md:h-[460px] flex items-center justify-center outline-none select-none"
         style={{ perspective: `${PERSPECTIVE}px` }}
       >
         <div
@@ -260,7 +260,7 @@ const Smooth3DCoverFlow = ({
       </div>
 
       {/* Sweep Indicator Icons below the grid */}
-      <div className="flex items-center gap-2 mt-4 z-20">
+      <div className="flex items-center gap-2 mt-2 z-20">
         {items.map((_, index) => (
           <button
             key={index}
@@ -271,10 +271,10 @@ const Smooth3DCoverFlow = ({
               }
             }}
             aria-label={`Go to slide ${index + 1}`}
-            className={`h-2.5 rounded-full transition-all duration-300 ${
+            className={`h-2 rounded-full transition-all duration-300 ${
               active === index
-                ? "w-8 bg-tertiary"
-                : "w-2.5 bg-white/30 hover:bg-white/60"
+                ? "w-6 bg-tertiary"
+                : "w-2 bg-white/30 hover:bg-white/60"
             }`}
           />
         ))}
@@ -314,20 +314,20 @@ const Video = () => {
     <section
       id="video"
       ref={videoSectionRef}
-      className={`min-h-screen bg-background py-24 md:py-32 px-4 md:px-8 overflow-hidden ${isVideoVisible ? 'scroll-animated' : ''}`}
+      className={`min-h-screen bg-background py-12 md:py-16 px-4 md:px-8 overflow-hidden ${isVideoVisible ? 'scroll-animated' : ''}`}
     >
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-8 md:mb-12 scroll-fade-up delay-100">
-          <span className="font-label text-tertiary text-sm tracking-[0.3em] uppercase block mb-4">Visual Stories</span>
-          <h2 className="font-headline text-5xl md:text-8xl font-extrabold tracking-tight text-on-surface drop-shadow-2xl">VIDEOS</h2>
+        <div className="text-center mb-6 md:mb-8 scroll-fade-up delay-100">
+          <span className="font-label text-tertiary text-xs tracking-[0.3em] uppercase block mb-2">Visual Stories</span>
+          <h2 className="font-headline text-4xl md:text-6xl font-extrabold tracking-tight text-on-surface drop-shadow-2xl">VIDEOS</h2>
         </div>
 
         {/* Separate New Release Feature */}
         {newReleaseVideo && (
-          <div className="mb-16 scroll-fade-up delay-200 flex flex-col items-center">
-            <div className="mb-4">
-              <span className="font-label text-xs bg-tertiary/90 text-on-tertiary px-3 py-1 rounded font-bold tracking-widest shadow uppercase">
+          <div className="mb-4 scroll-fade-up delay-200 flex flex-col items-center">
+            <div className="mb-2">
+              <span className="font-label text-[10px] bg-tertiary/90 text-on-tertiary px-2.5 py-0.5 rounded font-bold tracking-widest shadow uppercase">
                 New Release
               </span>
             </div>
@@ -336,7 +336,7 @@ const Video = () => {
               href={newReleaseVideo.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative w-full max-w-[600px] h-[320px] md:h-[360px] rounded-2xl overflow-hidden bg-surface-container-high shadow-2xl border border-tertiary/30 hover:border-tertiary card-gradient-wrapper transition-all duration-300 block"
+              className="group relative w-full max-w-[480px] h-[240px] md:h-[280px] rounded-xl overflow-hidden bg-surface-container-high shadow-2xl border border-tertiary/30 hover:border-tertiary card-gradient-wrapper transition-all duration-300 block"
             >
               <img
                 src={newReleaseVideo.thumb}
@@ -345,23 +345,23 @@ const Video = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
               
-              <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded shadow">
+              <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white text-[10px] px-2 py-0.5 rounded shadow">
                 {newReleaseVideo.duration}
               </div>
 
               <div className="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 transition-opacity">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#FF0000] flex items-center justify-center shadow-2xl scale-95 group-hover:scale-110 transition-transform duration-300">
-                  <svg viewBox="0 0 24 24" fill="white" className="w-8 h-8 ml-1">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#FF0000] flex items-center justify-center shadow-2xl scale-95 group-hover:scale-110 transition-transform duration-300">
+                  <svg viewBox="0 0 24 24" fill="white" className="w-6 h-6 ml-0.5">
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </div>
               </div>
 
-              <div className="absolute bottom-6 left-6 right-6">
-                <h3 className="font-headline text-2xl md:text-3xl font-bold text-white uppercase drop-shadow-md">
+              <div className="absolute bottom-4 left-4 right-4">
+                <h3 className="font-headline text-xl md:text-2xl font-bold text-white uppercase drop-shadow-md">
                   {newReleaseVideo.title}
                 </h3>
-                <p className="font-body text-sm text-gray-200 italic mt-1 opacity-90">
+                <p className="font-body text-xs text-gray-200 italic mt-0.5 opacity-90">
                   {newReleaseVideo.subtitle}
                 </p>
               </div>
@@ -369,13 +369,8 @@ const Video = () => {
           </div>
         )}
 
-        {/* Carousel Note */}
-        <p className="font-body italic text-center text-base md:text-lg text-secondary max-w-xl mx-auto mb-8 opacity-70 scroll-fade-up delay-300">
-          Click any video to bring to focus, click active video to watch on YouTube.
-        </p>
-
         {/* 3D Coverflow Gallery */}
-        <div className="scroll-fade-up delay-400">
+        <div className="scroll-fade-up delay-300">
           <Smooth3DCoverFlow items={carouselVideos} autoSweepInterval={4000} />
         </div>
       </div>
