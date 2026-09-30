@@ -3,14 +3,14 @@ import './Shows.css';
 
 const shows = [
   {
-    month: "SEP",
-    day: "05",
-    title: "DEDUNU PALAMA",
-    city: "KULIYAPITIYA",
-    venue: "Pandith W. D. Amaradewa Auditorium - University of Wayamba",
+    month: "OCT",
+    day: "18",
+    title: "SIHINA RAATHRIYA - MILANO",
+    city: "MILAN",
+    venue: "CAMPO SPORTIVO 'MILANESE CORVETTO' ,Via Fabio Massimo, 15, 20139 Milano",
     availability: "AVAILABLE",
     status: "book",
-    poster: "/images/IMG_5230.jpeg"
+    poster: "/images/Milan.jpeg"
   }
 ];
 
